@@ -1,4 +1,5 @@
-# Generative Video Augmentation for Sign Language Recognition
+# Generative Video Augmentation for Sign Language Recognition | Ongoing research..
+
 
 [![Kling V3](https://img.shields.io/badge/Kling-V3-237A68)](https://kling.ai/app) [![SCAIL-14B](https://img.shields.io/badge/SCAIL--14B-6250A8)](https://huggingface.co/zai-org/SCAIL-Preview)
 
