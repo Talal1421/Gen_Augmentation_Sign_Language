@@ -5,6 +5,8 @@
 
 At King Saud University’s [Center of Smart Robotics Research (CS2R)](https://www.cs2r.net/), we are working with the King Salman Center for Disability Research to expand a mixed-signer collection of approximately **7,000 Saudi signs**, with one recorded video per sign. We used **Kling 3.0 Motion Control** and **SCAIL-14B** to test whether generated repetitions and new signer appearances can improve recognition when training starts with one real clip per sign. A 293-video pilot drawn from KSU-SSL recreates that training setup on a smaller scale. [Saudi Sign Language Library](https://sshi.sa/)
 
+![Video augmentation workflow showing reference video and signer image inputs, with Kling V3 Motion Control and SCAIL-14B outputs](assets/white-workflow-original-backgrounds.png)
+
 **Preprint** · Soon &nbsp; | &nbsp; **Code** · Soon
 
 ## Dataset
