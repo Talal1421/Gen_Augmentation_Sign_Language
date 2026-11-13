@@ -23,19 +23,17 @@ I am authorized to share the original KSU-SSL reference clip shown in these demo
 
 #### Same signer, different angle
 
-![Synchronized demo showing the original clip feeding Kling V3 Motion Control and SCAIL-14B, with both generated clips playing alongside it.](assets/same-signer-comparison.webp)
+![The reference video and its first frame feed Kling V3 Motion Control and SCAIL-14B, with both model outputs playing in sync below the inputs.](assets/same-signer-inputs.webp)
 
-[Comparison MP4](assets/same-signer-comparison.mp4) · Original-quality clips: [Original](assets/original.mp4), [Kling V3](assets/kling-same-signer.mp4), [SCAIL-14B](assets/scail-same-signer.mp4)
+[Comparison MP4](assets/same-signer-inputs.mp4) · Original-quality clips: [Original](assets/original.mp4), [Kling V3](assets/kling-same-signer.mp4), [SCAIL-14B](assets/scail-same-signer.mp4)
 
 #### Different signer
 
-Kling V3 Motion Control receives the same signing video and the **AI-generated character image** below.
+Kling V3 Motion Control receives the same signing video and the **AI-generated character image** shown in the demo. [View the character image at full size](assets/ai-generated-character.png).
 
-![Synchronized demo showing the original clip alongside Kling V3 Motion Control output with an AI-generated signer.](assets/different-signer-comparison.webp)
+![The reference video and AI-generated signer image feed Kling V3 Motion Control, with the generated clip playing in sync with the reference.](assets/different-signer-inputs.webp)
 
-[Comparison MP4](assets/different-signer-comparison.mp4) · [Original-quality Kling V3 clip](assets/kling-ai-signer.mp4)
-
-<img src="assets/ai-generated-character.png" alt="AI-generated character image used as the appearance reference for the different-signer Kling demo" width="260">
+[Comparison MP4](assets/different-signer-inputs.mp4) · [Original-quality Kling V3 clip](assets/kling-ai-signer.mp4)
 
 #### Key frames showing pose differences
 
@@ -53,11 +51,11 @@ Validation uses **repetition 2** and testing uses **repetition 3** from the same
 
 | Training data | Sample size (real + generated) | Top-1 accuracy | Top-5 accuracy |
 | --- | ---: | ---: | ---: |
-| Real only | 293 (293 + 0) | | |
-| Real + 1 Kling clip per sign | 586 (293 + 293) | | |
-| Real + 2 Kling clips per sign | 879 (293 + 586) | | |
-| Real + 1 SCAIL clip per sign | 586 (293 + 293) | | |
-| Real + 2 Kling clips and 1 SCAIL clip per sign | 1,172 (293 + 879) | | |
+| Real only | 293 (293 + 0) | 71% | 90% |
+| Real + 1 Kling clip per sign (same signer) | 586 (293 + 293) | 83% | 97% |
+| Real + 2 Kling clips per sign (same signer) | 879 (293 + 586) | 87% | 97% |
+| Real + 1 SCAIL clip per sign | 586 (293 + 293) | 83% | 94% |
+| Real + 1 Kling clip per sign (different signer) | 586 (293 + 293) | 78% | 92% |
 
 ### Signer-independent
 
@@ -65,10 +63,12 @@ Validation uses **repetition 1** from KSU-SSL signers **16, 19, 25, 26, and 29**
 
 | Training data | Sample size (real + generated) | Top-1 accuracy | Top-5 accuracy |
 | --- | ---: | ---: | ---: |
-| Real only | 293 (293 + 0) | | |
-| Real + 1 Kling clip per sign | 586 (293 + 293) | | |
-| Real + 2 Kling clips per sign | 879 (293 + 586) | | |
-| Real + 1 SCAIL clip per sign | 586 (293 + 293) | | |
+| Real only | 293 (293 + 0) | 15% | 30% |
+| Real + 1 Kling clip per sign (same signer) | 586 (293 + 293) | 22% | 40% |
+| Real + 2 Kling clips per sign (same signer) | 879 (293 + 586) | 28% | 52% |
+| Real + 1 SCAIL clip per sign | 586 (293 + 293) | 19% | 38% |
+| Real + 1 Kling clip per sign (different signer) | 586 (293 + 293) | 24% | 51% |
+| Real + 5 Kling clips per sign (different signer) | 1758 (293 + 1465) | 40% | 74% |
 
 ## Hardware and generation time
 
