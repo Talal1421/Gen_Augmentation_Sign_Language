@@ -12,24 +12,36 @@ The full King Saud University Saudi Sign Language dataset (KSU-SSL) contains **2
 
 ## Augmentation approach
 
-An original signing video drives the motion in SCAIL-14B or Kling 3.0 Motion Control. A reference image determines the generated signer’s appearance. Both routes keep the original sign label.
+Both Kling 3.0 Motion Control and SCAIL-14B take two inputs: a **reference signing video** that supplies the motion and a **character image** that supplies the signer’s appearance. We carry the reference video’s sign label over to the generated clips.
 
 - **Same signer.** Original video + image of the original signer → Kling or SCAIL → generated video counted as a **new repetition**.
 - **Different signer.** Original video + image of a different person or a synthetic character → Kling or SCAIL → generated video counted as a **new signer example**.
 
 ### Demo clips
 
+I am authorized to share the original KSU-SSL reference clip shown in these demos. The inline comparisons are framed around the signers. The source MP4 links provide the full frames.
+
 #### Same signer, different angle
 
-![Synchronized demo showing the original clip feeding Kling V3 Motion Control and SCAIL-14B, with both generated clips playing alongside it.](assets/demo-same-signer.webp)
+![Synchronized demo showing the original clip feeding Kling V3 Motion Control and SCAIL-14B, with both generated clips playing alongside it.](assets/same-signer-comparison.webp)
 
-[Comparison MP4](assets/demo-same-signer.mp4) · Original-quality clips: [Original](assets/original.mp4), [Kling V3](assets/kling-same-signer.mp4), [SCAIL-14B](assets/scail-same-signer.mp4)
+[Comparison MP4](assets/same-signer-comparison.mp4) · Original-quality clips: [Original](assets/original.mp4), [Kling V3](assets/kling-same-signer.mp4), [SCAIL-14B](assets/scail-same-signer.mp4)
 
 #### Different signer
 
-![Synchronized demo showing the original clip alongside Kling V3 Motion Control output with an AI-generated signer.](assets/demo-different-signer.webp)
+Kling V3 Motion Control receives the same signing video and the **AI-generated character image** below.
 
-[Comparison MP4](assets/demo-different-signer.mp4) · [Original-quality Kling V3 clip](assets/kling-ai-signer.mp4)
+![Synchronized demo showing the original clip alongside Kling V3 Motion Control output with an AI-generated signer.](assets/different-signer-comparison.webp)
+
+[Comparison MP4](assets/different-signer-comparison.mp4) · [Original-quality Kling V3 clip](assets/kling-ai-signer.mp4)
+
+<img src="assets/ai-generated-character.png" alt="AI-generated character image used as the appearance reference for the different-signer Kling demo" width="260">
+
+#### Key frames showing pose differences
+
+These four close-ups compare the original signer with the Kling and SCAIL outputs. The first two rows show hand placement along the arm. The last two show differences in finger shape and fingertip position near the temple.
+
+![Four key poses in the same-signer demo, arranged in rows with the original reference, Kling output, and SCAIL output in columns.](assets/pose-differences.webp)
 
 ## Recognition evaluation
 
