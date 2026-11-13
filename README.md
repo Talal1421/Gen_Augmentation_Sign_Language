@@ -1,16 +1,14 @@
 # Generative Video Augmentation for Sign Language Recognition
 
-At King Saud University’s [Center of Smart Robotics Research (CS2R)](https://www.cs2r.net/), Talal Aloushan led an ongoing study with the King Salman Center for Disability Research on expanding a mixed-signer collection of approximately **7,000 Saudi signs**, with one recorded video per sign. We used **Kling 3.0 Motion Control** and **SCAIL-14B** to test whether generated repetitions and new signer appearances can improve recognition when training starts with one real clip per sign. A 293-video pilot drawn from KSU-SSL recreates that training setup on a smaller scale. [Saudi Sign Language Library](https://sshi.sa/)
+[![Kling V3](https://img.shields.io/badge/Kling-V3-237A68)](https://kling.ai/app) [![SCAIL-14B](https://img.shields.io/badge/SCAIL--14B-6250A8)](https://huggingface.co/zai-org/SCAIL-Preview)
 
-[![Kling 3.0 Motion Control](https://img.shields.io/badge/Kling%203.0-Motion%20Control-237A68)](https://kling.ai/app)
-[![SCAIL-14B Q5](https://img.shields.io/badge/SCAIL--14B-Q5%20GGUF-6250A8)](https://huggingface.co/vantagewithai/SCAIL-Preview-GGUF/tree/main)
-![GeForce RTX 3090 with 24 GB VRAM](https://img.shields.io/badge/GeForce%20RTX%203090-24%20GB%20VRAM-537810?logo=nvidia&logoColor=white)
+At King Saud University’s [Center of Smart Robotics Research (CS2R)](https://www.cs2r.net/), we are working with the King Salman Center for Disability Research to expand a mixed-signer collection of approximately **7,000 Saudi signs**, with one recorded video per sign. We used **Kling 3.0 Motion Control** and **SCAIL-14B** to test whether generated repetitions and new signer appearances can improve recognition when training starts with one real clip per sign. A 293-video pilot drawn from KSU-SSL recreates that training setup on a smaller scale. [Saudi Sign Language Library](https://sshi.sa/)
 
 **Preprint** · Soon &nbsp; | &nbsp; **Code** · Soon
 
 ## Dataset
 
-The full King Saud University Saudi Sign Language dataset (KSU-SSL) contains **293 signs, 33 signers, and 145,035 samples** across 10 domains, including healthcare, everyday vocabulary, and the alphabet. For the pilot, we selected **293 original RGB training clips**, one per sign, from five signers. Additional real clips from KSU-SSL served as validation and test data. [KSU-SSL dataset paper (Alsulaiman et al., 2023)](https://www.sciencedirect.com/science/article/pii/S1319157823001969?via%3Dihub)
+The full King Saud University Saudi Sign Language dataset (KSU-SSL) contains **293 signs, 33 signers, and 145,035 samples** across 10 domains, including healthcare, everyday vocabulary, and the alphabet. The real-only training set contains **293 original RGB clips**, one per sign, drawn from repetition 1 across signers **18, 2, 24, 21, and 1**. [KSU-SSL dataset paper (Alsulaiman et al., 2023)](https://www.sciencedirect.com/science/article/pii/S1319157823001969?via%3Dihub)
 
 ## Augmentation approach
 
@@ -21,11 +19,17 @@ An original signing video drives the motion in SCAIL-14B or Kling 3.0 Motion Con
 
 ### Demo clips
 
-| Original motion reference | SCAIL-14B · Same signer |
-| :---: | :---: |
-| [Watch MP4](assets/original.mp4) | [Watch MP4](assets/scail-same-signer.mp4) |
-| **Kling 3.0 · Same signer** | **Kling 3.0 · AI-generated signer** |
-| [Watch MP4](assets/kling-same-signer.mp4) | [Watch MP4](assets/kling-ai-signer.mp4) |
+#### Same signer, different angle
+
+![Synchronized demo showing the original clip feeding Kling V3 Motion Control and SCAIL-14B, with both generated clips playing alongside it.](assets/demo-same-signer.webp)
+
+[Comparison MP4](assets/demo-same-signer.mp4) · Original-quality clips: [Original](assets/original.mp4), [Kling V3](assets/kling-same-signer.mp4), [SCAIL-14B](assets/scail-same-signer.mp4)
+
+#### Different signer
+
+![Synchronized demo showing the original clip alongside Kling V3 Motion Control output with an AI-generated signer.](assets/demo-different-signer.webp)
+
+[Comparison MP4](assets/demo-different-signer.mp4) · [Original-quality Kling V3 clip](assets/kling-ai-signer.mp4)
 
 ## Recognition evaluation
 
@@ -33,7 +37,7 @@ The recognition model uses **spatial and temporal encoders with attention** to r
 
 ### Signer-dependent
 
-Training and validation share signer identities. Validation uses a second real repetition of each sign, and testing uses a third.
+Validation uses **repetition 2** and testing uses **repetition 3** from the same KSU-SSL signers as training.
 
 | Training data | Sample size (real + generated) | Top-1 accuracy | Top-5 accuracy |
 | --- | ---: | ---: | ---: |
@@ -45,7 +49,7 @@ Training and validation share signer identities. Validation uses a second real r
 
 ### Signer-independent
 
-Training, validation, and testing each use a distinct group of real signers.
+Validation uses **repetition 1** from KSU-SSL signers **16, 19, 25, 26, and 29**. Testing uses **repetition 1** from signers **5, 6, 7, 9, and 30**.
 
 | Training data | Sample size (real + generated) | Top-1 accuracy | Top-5 accuracy |
 | --- | ---: | ---: | ---: |
@@ -65,4 +69,4 @@ Generated clips averaged about **4 seconds**. Local generation used an **NVIDIA 
 
 We also ran [MimicMotion](https://github.com/Tencent/MimicMotion), [MagicAnimate](https://github.com/magic-research/magic-animate), and [Wan2.2](https://github.com/Wan-Video/Wan2.2) locally. Their outputs did not preserve the signing motion well enough for this study.
 
-[Official SCAIL model card](https://huggingface.co/zai-org/SCAIL-Preview) · [Community SCAIL Pose Space (paused)](https://huggingface.co/spaces/John2J/SCAIL-Pose)
+[Official SCAIL model card](https://huggingface.co/zai-org/SCAIL-Preview)
